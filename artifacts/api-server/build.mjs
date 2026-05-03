@@ -15,6 +15,11 @@ async function buildAll() {
   await rm(distDir, { recursive: true, force: true });
 
   await esbuild({
+      // Copie le build du frontend ai-chat dans dist/public pour qu'Express le serve
+  const { cp } = await import("node:fs/promises");
+  const frontendDist = path.resolve(artifactDir, "..", "ai-chat", "dist", "public");
+  const targetDist = path.resolve(distDir, "public");
+  await cp(frontendDist, targetDist, { recursive: true });
     entryPoints: [path.resolve(artifactDir, "src/index.ts")],
     platform: "node",
     bundle: true,
