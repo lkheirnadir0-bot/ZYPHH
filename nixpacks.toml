@@ -1,0 +1,9 @@
+[phases.build]
+cmds = [
+  "pnpm install --frozen-lockfile",
+  "pnpm --filter ./artifacts/ai-chat run build",
+  "pnpm --filter ./artifacts/api-server... run build"
+]
+
+[start]
+cmd = "pnpm start"
