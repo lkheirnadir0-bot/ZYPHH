@@ -2,7 +2,7 @@
   "$schema": "https://railway.com/railway.schema.json",
   "build": {
     "builder": "RAILPACK",
-    "buildCommand": "pnpm install && pnpm -r --if-present run build"
+    "buildCommand": "pnpm install --frozen-lockfile && pnpm --filter ./artifacts/ai-chat run build && pnpm --filter ./artifacts/api-server... run build"
   },
   "deploy": {
     "startCommand": "pnpm start",
